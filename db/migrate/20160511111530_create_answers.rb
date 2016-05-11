@@ -5,6 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.integer :question_id, null:false
       t.integer :the_one_who_answers_id, null:false
       t.boolean :best?
+      t.integer :score, default: 0
 
       t.timestamps null:false
     end

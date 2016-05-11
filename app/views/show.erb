@@ -1,0 +1,74 @@
+
+<h2> <%= @question.title %> </h2>
+<!-- css line -->
+<h4> asked: <%= @question.created_at %> | viewed: <%= @question.view_count %> | active: <%= @question.updated_at %> </h4>
+
+<div class="body_container">
+  <!-- css line -->
+  <div class="vote_arrows">
+    <img src="#">
+    <h3><%= @question.score %></h3>
+    <img src="#">
+  </div>
+
+  <p class="body"><%= @question.body %></p>
+
+  <% for tag in @question.tags %>
+    <div class="tag"> <%= tag.name %> </div>
+  <% end %>
+
+  <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+
+  <div class="user">
+    <p>asked: <%= @question.created_at %></p>
+    <a href"/users/<%= @question.author_id %>"> <%= @question.author %> </a>
+    <!-- reputation -->
+  </div>
+  <!-- css line  -->
+  <% for response in @question.responses %>
+    <div class="question_response">
+      <p><%= response.body %> --</p>
+      </a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
+      <p><%= response.created_at %></p>
+    </div>
+  <% end %>
+
+  <a href="#">add a quack</a>
+  <!-- add comment link goes here (need reputation to comment?)  -->
+</div>
+
+<div class="answer_container">
+  <div class="answer_sort">
+    <h4><%= @question.answers.count %></h4>
+    <ul class="tabs">
+        <li><a href="/question/:id/active">Active</a></li>
+        <li><a href="/question/:id/oldest">Oldest</a></li>
+        <li class="active"><a href="/question/:id/votes">Votes</a></li>
+    </ul>
+  </div>
+
+  <% for answer in @answers %>
+
+    <div class="vote_arrows">
+      <img src="#">
+      <h3><%= answer.score %></h3>
+      <img src="#">
+    </div>
+
+    <p class="body"><%= answer.body %></p>
+
+    <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+
+    <div class="user">
+      <p>answered: <%= answer.created_at %></p>
+      <a href"/users/<%= @question.author_id %>"> <%= answer.the_one_who_answered_id.username %> </a>
+      <!-- reputation -->
+    </div>
+
+    <a href="#">add a quack</a>
+
+    <!-- add responses for each answer -->
+
+    <!-- add comment link goes here (need reputation to comment?)  -->
+  <% end %>
+</div>
