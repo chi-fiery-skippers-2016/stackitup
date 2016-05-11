@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  has_many :votes, as: :votable
+  has_many :votes, as: :voteable
   has_many :taggings
   has_many :tags, through: :taggings
   has_many :answers

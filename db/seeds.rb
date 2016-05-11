@@ -14,8 +14,9 @@ end
 
 15.times do
   vote = Vote.create!(
-    votable_id: rand(10),
-    votable_type: rand(1) == 1 ? 'app/models/question' : 'app/models/answer'
+    voteable_id: rand(10),
+    voteable_type: rand(1) == 1 ? 'app/models/question' : 'app/models/answer',
+    up?: rand(1) == 1 ? true : false
     )
 end
 
