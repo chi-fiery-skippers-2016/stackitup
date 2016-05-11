@@ -5,6 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :body, null:false
       t.integer :author_id, null:false
       t.integer :view_count, default: 0
+      t.integer :score, default: 0
 
       t.timestamps null:false
     end
