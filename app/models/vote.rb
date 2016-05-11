@@ -3,11 +3,12 @@ class Vote < ActiveRecord::Base
 
   before_save :add_score
 
+  # change Q/A score upon vote
   def add_score
     if self.up?
-      self.question.score += 1
+      self.voteable.score += 1
     else
-      self.question.score -= 1
+      self.voteable.score -= 1
     end
   end
 end

@@ -1,0 +1,42 @@
+<div class="container">
+
+    <ul class="tabs">
+        <li class="active"><a href="#recent">Recent</a></li>
+        <li><a href="#">Highest Votes</a></li>
+        <li><a href="#">Trending</a></li>
+    </ul>
+
+    <div class="tab-content" id="recent">
+      <% @questions.each do |question|  %>
+        <h3><%= question.title %></h3>
+        <%= question.body %>
+        <%= question.author %>
+        <%= question.view_count %>
+        <%= question.votes.count %>
+        <%= question.answers.count %>
+        <% question.tags.each do |tag| %>
+        <%= tag.name %>
+        <% end %>
+        <%= question.created_at %>
+        <p>=========================================</p>
+    <% end %>
+    </div>
+
+    <div class="tab-content" id="highest_votes">
+      <% @questions.each do |question|  %>
+        <%= question.title %>
+        <%= question.body %>
+        <%= question.author_id %>
+        <%= question.view_count %>
+    <% end %>
+    </div>
+
+    <div class="tab-content" id="trending">
+      <% @questions.each do |question|  %>
+        <%= question.title %>
+        <%= question.body %>
+        <%= question.author_id %>
+        <%= question.view_count %>
+    <% end %>
+    </div>
+</div>
