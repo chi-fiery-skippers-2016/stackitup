@@ -1,9 +1,9 @@
 <div class="container">
 
     <ul class="tabs">
-        <li class="active"><a href="#recent">Recent</a></li>
-        <li><a href="#">Highest Votes</a></li>
-        <li><a href="#">Trending</a></li>
+        <li class="active"><a href="/questions?sort=recent">Recent</a></li>
+        <li><a href="/questions?sort=highest_votes">Highest Votes</a></li>
+        <li><a href="/questions?sort=trending">Trending</a></li>
     </ul>
 </div>
 <!-- 1) Color code the metric counter boxes 2) Add link to tags for viewing all questions with selected tag
@@ -14,7 +14,7 @@
     <div class="tab-content" id="recent">
         <% @questions.each do |question|  %>
             <div class="post"><!--Fix top border-->
-                <h3><%= question.title %></h3>
+                <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
 
                     <div class='metric_container'>
                         <div class='scorebox'>
