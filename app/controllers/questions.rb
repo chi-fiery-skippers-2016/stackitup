@@ -1,32 +1,17 @@
 get '/questions' do
-  @questions = Question.all
+  sort_by = params[:sort] || 'recent'
+  @questions = Question.sort_questions(sort_by)
   erb :index
-
-=begin
-Can sort questions by
-recent - created_at
-highest votes
-trending -
-
-=end
 end
 
 get '/questions/new' do
   erb :'questions/new'
 end
 
+  # AJAX THIS SHIT LATER
 get '/questions/:id' do
   @question = Question.find(params[:id])
-  @answers = @question.sort('votes')
+  sort_by = params[:sort] || 'votes'
+  @answers = @question.sort_answers(sort_by)
   erb :show
 end
-
-get '/questions/:id/:sort' do
-  @question = Question.find(params[:id])
-  @answers = @question.sort(params[:sort])
-
-  erb :show
-  # AJAX THIS SHIT LATER
-end
-
-
