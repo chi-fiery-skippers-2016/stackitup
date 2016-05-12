@@ -77,5 +77,4 @@ class Question < ActiveRecord::Base
     self.tags = tag_group
   end
 
-
 end
