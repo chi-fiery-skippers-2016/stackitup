@@ -12,53 +12,64 @@ end
     )
 end
 
-15.times do
-  vote = Vote.create!(
-    voteable_id: 1 + rand(9),
-    voteable_type: rand(1) == 1 ? 'question' : 'answer',
-    voter_id: rand(3) + 1,
-    up?: rand(1) == 1 ? true : false
-    )
-end
-
-
-30.times do
-  response = Response.create!(
-    body: Faker::StarWars.quote,
-    # respondable: answer.id, question.id
-    respondable_id: 1 + rand(9),
-    respondable_type: rand(1) == 1 ? 'question' : 'answer',
-    user_id: rand(3) + 1
+10.times do
+  question = Question.create!(
+    title: Faker::StarWars.quote,
+    body: Faker::Hipster.paragraph,
+    author_id: rand(3) + 1,
+    view_count: rand(1000)
     )
 end
 
 10.times do
   answer = Answer.create!(
     body: Faker::Lorem.sentence,
-    question_id: 1 + rand(4),
-    the_one_who_answers_id: 1 + rand(2),
+    question_id: rand(10) + 1,
+    theOneWhoAnswers_id: rand(3) + 1,
     best?: false
     )
 end
 
-
+30.times do
+  response = Response.create!(
+    body: Faker::StarWars.quote,
+    respondable: rand(2) == 1 ? Question.all.sample : Answer.all.sample,
+    user_id: rand(3) + 1
+    )
+end
 ## CAN I COMMENT OR ANSWER ON MY OWN POST??
 
 
-
-
-10.times do
-  question = Question.create!(
-    title: Faker::StarWars.quote,
-    body: Faker::Hipster.paragraph,
-    author_id: 1 + rand(2),
-    view_count: rand(1000)
+20.times do
+  tagging = Tagging.create!(
+     tag_id: rand(20) + 1,
+     question_id: rand(10) + 1
     )
 end
 
-20.times do
-  tagging = Tagging.create!(
-     tag_id: 1 + rand(19),
-     question_id: 1 + rand(9)
+num = rand(3)
+if num == 0
+  15.times do
+  vote = Vote.create!(
+    voteable: Question.all.sample,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
     )
+  end
+elsif num == 1
+  15.times do
+  vote = Vote.create!(
+    voteable: Answer.all.sample,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
+    )
+  end
+else
+  15.times do
+  vote = Vote.create!(
+    voteable: Response.all.sample,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
+    )
+  end
 end
