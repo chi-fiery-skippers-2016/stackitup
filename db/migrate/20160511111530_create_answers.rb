@@ -4,7 +4,7 @@ class CreateAnswers < ActiveRecord::Migration
       t.string :body, null:false
       t.integer :question_id, null:false
       t.integer :theOneWhoAnswers_id, null:false
-      t.boolean :best?
+      t.boolean :best?, default: false
       t.integer :score, default: 0
 
       t.timestamps null:false

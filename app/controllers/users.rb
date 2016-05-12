@@ -9,5 +9,5 @@ post '/users' do
 end
 
 get '/users/:id' do
-
+  erb :'users/show'
 end

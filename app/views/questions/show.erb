@@ -27,7 +27,7 @@
   <div class="meta_stuff">
     <div class="tag_meta">
       <% for tag in @question.tags %>
-      <a href="#"><%= tag.name %></a>
+      <a href="/tags/<%= tag.id %>"><%= tag.name %></a>
       <% end %>
     </div>
 
@@ -97,7 +97,6 @@
         <!-- reputation -->
       </div>
 
-      <a href="#">add a quack</a>
       <% for response in answer.responses %>
         <div>
           <p><%= response.body %> - </p>
@@ -106,16 +105,16 @@
         </div>
       <% end %>
 
-      <a href="#">add a comment</a>
+      <a href="#">add a quack</a>
 
     <% end %>
   </div>
 <% end %>
 
 <h4>Your Answer</h4>
-<form action="/answers/new" id="answer_form">
-  <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
-  <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
+<form method="post" action="/answers" id="answer_form">
+  <textarea type="textarea" rows="4" cols="50" name="body" placeholder='write your answer here'></textarea>
+  <input type="hidden" name="question_id" value="<%= @question.id %>">
   <input type="submit">
 </form>
 
