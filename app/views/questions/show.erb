@@ -1,8 +1,11 @@
-<h2> <%= @question.title %> </h2>
-<!-- css line -->
-<h4> asked: <%= @question.created_at %>_________viewed: <%= @question.view_count %>_________active: <%= @question.updated_at %> </h4>
-
 <div class="body_container">
+  <h2> <%= @question.title %> </h2>
+  <!-- css line -->
+  <div class="question_headers">
+    <h4> asked: <%= last_asked(@question.created_at) %> </h4>
+    <h4>viewed: <%= @question.view_count %></h4>
+    <h4>active: <%= @question.updated_at %> </h4>
+  </div>
   <!-- css line -->
   <div class="vote_arrows">
     <form method="post" action="/questions/<%= @question.id %>/votes">
@@ -20,16 +23,26 @@
 
   <p class="body"><%= @question.body %></p>
 
-  <% for tag in @question.tags %>
-    <div class="tag"> <%= tag.name %> </div>
-  <% end %>
 
-  <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+  <div class="meta_stuff">
+    <div class="tag_meta">
+      <% for tag in @question.tags %>
+      <a href="#"><%= tag.name %></a>
+      <% end %>
+    </div>
 
-  <div class="user">
-    <p>asked: <%= @question.created_at %></p>
-    <a href"/users/<%= @question.author_id %>"> <%= @question.author %> </a>
-    <!-- reputation -->
+     <div class="links">
+      <a href="#">share</a>
+      <a href="#">improve this question</a>
+     </div>
+
+    <div class="user">
+      <p>asked: <%= @question.created_at %></p>
+      <a href"/users/<%= @question.author_id %>"> <%= @question.author %> </a>
+      <!-- reputation -->
+    </div>
+
+
   </div>
   <!-- css line  -->
   <% for response in @question.responses %>
@@ -40,7 +53,7 @@
     </div>
   <% end %>
 
-  <a href="#">add a quack</a>
+  <a class="add_quack" href="#">add a quack</a>
   <!-- add comment link goes here (need reputation to comment?)  -->
 </div>
 

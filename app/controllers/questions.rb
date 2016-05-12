@@ -18,8 +18,15 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  #create new question with params
-  erb :'questions/index'
+  p params
+  tag_string = params.delete('tag_names')
+  new_question = Question.new(params[:question])
+  new_question.save
+  tag_names=tag_string
+
+  ## ADD USER ERRORS
+
+  redirect '/questions'
 end
 
 post '/questions/:id/votes' do
