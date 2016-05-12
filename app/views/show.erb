@@ -5,9 +5,9 @@
 <div class="body_container">
   <!-- css line -->
   <div class="vote_arrows">
-    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck up -->
+    <i class="fa fa-arrow-up" aria-hidden="true"></i> <!-- rubber duck up -->
     <h3><%= @question.score %></h3>
-    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck down -->
+    <i class="fa fa-arrow-down" aria-hidden="true"></i> <!-- rubber duck down -->
   </div>
 
   <p class="body"><%= @question.body %></p>
@@ -50,9 +50,9 @@
   <% for answer in @answers %>
 
     <div class="vote_arrows">
-      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
       <h3><%= answer.score %></h3>
-      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
+      <i class="fa fa-arrow-down" aria-hidden="true"></i>
     </div>
 
     <p class="body"><%= answer.body %></p>
@@ -61,8 +61,7 @@
 
     <div class="user">
       <p>answered: <%= answer.created_at %></p>
-      <!-- NEED TO CHANGE THIS TO USERNAME -->
-      <a href"/users/<%= @question.author_id %>"> <%= answer.the_one_who_answers_id %> </a>
+      <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
       <!-- reputation -->
     </div>
 
