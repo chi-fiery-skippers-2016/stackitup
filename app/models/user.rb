@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   def password=(plaintext_password)
     @plaintext_password = plaintext_password
     @hashed_password = BCrypt::Password.create(plaintext_password)
-    self.hashed_password = @hashed_password
+    self.hashword = @hashed_password
   end
 
   def password
@@ -20,6 +20,6 @@ class User < ActiveRecord::Base
   end
 
   def validate_password
-    errors.add(:password, 'too short') if @plaintext_password.length < 8
+    errors.add(:password, 'too short') if @plaintext_password.length < 6
   end
 end

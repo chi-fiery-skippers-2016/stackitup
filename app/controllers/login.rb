@@ -1,8 +1,10 @@
 get '/login' do
   if request.xhr?
-    status 200 
+    status 200
     erb :'_login', :layout => false
-  erb :login
+  else
+    erb :'_login' 
+  end
 end
 
 post '/login' do
@@ -36,4 +38,4 @@ end
 #   else
 #     redirect '/posts'
 #   end
-end
+# end
