@@ -7,8 +7,7 @@
     </ul>
 </div>
 <!-- 1) Color code the metric counter boxes 2) Add link to tags for viewing all questions with selected tag
-3) Color scheme generator with DUCK, FARFETCHED 4) Typography 
-5) Refine last answered helper function, add logic for seconds, minutes, hours, days
+3) Color scheme generator with DUCK, FARFETCHED 4) Typography
 6) Determine optimal width: ~1080px 7) AJAX for tabs-->
 
 <div class="container">
@@ -39,6 +38,9 @@
                     </div>
 
                     <div class="tag_meta">
+                        <% if question.tags.empty? %>
+                            <br>
+                        <% end %>
                         <% question.tags.each do |tag| %>
                         <span class="tag_box">
                             <a href = "#"><%= tag.name %></a>
@@ -48,7 +50,7 @@
 
                     <div class="post_meta">
                         <span>posted by: <%= question.author.username %></span>
-                        <span> last asked: <%= last_asked(question.created_at) %> hours ago </span>
+                        <span id='time_asked'><%= last_asked(question.created_at) %></span>
                     </div>
             </div>
         <% end %>
