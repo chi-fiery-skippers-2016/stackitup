@@ -73,7 +73,6 @@ class Question < ActiveRecord::Base
     else
       tag_group << Tag.find_by(name: tag_name)
     end
-    tag_id: tag_id, question_id: params[:question][:id])
   end
     self.tags = tag_group
   end

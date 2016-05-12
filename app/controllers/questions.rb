@@ -19,7 +19,7 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  puts params
+  p params
   tag_string = params.delete('tag_names')
   new_question = Question.new(params[:question])
   new_question.save

@@ -6,7 +6,7 @@
     <textarea rows="10" cols="100" name="question[body]" form="new_question"></textarea>
     <label for="tags">Tags</label>
       <input type="text" name="question[tag_names]" placeholder="enter a tag (e.g.,  wordpress), max 5 tags, separated by commas">
-      <input type="hidden" name="question[author_id]" value='5'>
+      <input type="hidden" name="question[author_id]" value='<%= session[:user_id] %>'>
     <input id="button" type="submit" value="Post">
   </form>
 </div>
