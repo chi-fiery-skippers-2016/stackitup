@@ -1,6 +1,13 @@
 get '/questions' do
   @questions = Question.all
   erb :index
+=begin
+Can sort questions by
+recent - created_at
+highest votes
+trending -
+
+=end
 end
 
 get '/questions/:id' do
