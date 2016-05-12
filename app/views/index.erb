@@ -43,8 +43,8 @@
                     </div>
 
                     <div class="post_meta">
-                        <%= question.author.username %>
-                        <%= question.created_at.strftime("%m/%d/%Y") %>
+                        <span>posted by: <%= question.author.username %></span>
+                        <span> last answered: <%= last_answered(question.created_at) %> hours ago </span>
                     </div>
             </div>
         <% end %>
