@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
-  has_many :questions
-  has_many :answers
-  has_many :responses, as: :respondable
-  has_many :votes
-
+  has_many :questions, foreign_key: :author_id
+  has_many :answers, foreign_key: :theOneWhoAnswers_id
+  has_many :responses
+  has_many :votes, foreign_key: :voter_id
 
   # validate :validate_password
 
@@ -24,5 +23,4 @@ class User < ActiveRecord::Base
   def validate_password
     self.errors.add(:password, 'You password should contain more than 6 characters. Dummy.') if @plaintext_password.length < 6
   end
-
 end

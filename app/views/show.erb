@@ -5,9 +5,9 @@
 <div class="body_container">
   <!-- css line -->
   <div class="vote_arrows">
-    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck up -->
+    <i class="fa fa-arrow-up" aria-hidden="true"></i> <!-- rubber duck up -->
     <h3><%= @question.score %></h3>
-    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck down -->
+    <i class="fa fa-arrow-down" aria-hidden="true"></i> <!-- rubber duck down -->
   </div>
 
   <p class="body"><%= @question.body %></p>
@@ -50,9 +50,9 @@
   <% for answer in @answers %>
 
     <div class="vote_arrows">
-      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
       <h3><%= answer.score %></h3>
-      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
+      <i class="fa fa-arrow-down" aria-hidden="true"></i>
     </div>
 
     <p class="body"><%= answer.body %></p>
@@ -61,15 +61,28 @@
 
     <div class="user">
       <p>answered: <%= answer.created_at %></p>
-      <!-- NEED TO CHANGE THIS TO USERNAME -->
-      <a href"/users/<%= @question.author_id %>"> <%= answer.the_one_who_answers_id %> </a>
+      <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
       <!-- reputation -->
     </div>
 
     <a href="#">add a quack</a>
+    <% for response in answer.responses %>
+      <div>
+        <p><%= response.body %> - </p>
+        <a href="#"><%= response.user.username %></a>
+        <p><%= response.created_at %></p>
+      </div>
+    <% end %>
 
-    <!-- add responses for each answer -->
+    <a href="#">add a comment</a>
 
-    <!-- add comment link goes here (need reputation to comment?)  -->
   <% end %>
+
+  <h4>Your Answer</h4>
+  <form action="/answers/new" id="answer_form">
+    <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
+    <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
+    <input type="submit">
+  </form>
+
 </div>
