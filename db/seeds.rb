@@ -15,9 +15,9 @@ end
 15.times do
   vote = Vote.create!(
     voteable_id: rand(10) + 1,
-    voteable_type: rand(1) == 1 ? 'question' : 'answer',
+    voteable_type: rand(2) == 1 ? 'question' : 'answer',
     voter_id: rand(3) + 1,
-    up?: rand(1) == 1 ? true : false
+    up?: rand(2) == 1 ? true : false
     )
 end
 
@@ -27,7 +27,7 @@ end
     body: Faker::StarWars.quote,
     # respondable: answer.id, question.id
     respondable_id: rand(10) + 1,
-    respondable_type: rand(1) == 1 ? 'question' : 'answer',
+    respondable_type: rand(2) == 1 ? 'question' : 'answer',
     user_id: rand(3) + 1
     )
 end
