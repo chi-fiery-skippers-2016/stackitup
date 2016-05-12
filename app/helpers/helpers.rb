@@ -3,15 +3,14 @@ def last_asked(time)
   minutes = ((Time.now - time)/60).round
 
   if hours > 24
-    return "asked: #{(hours/24).round} days ago"
-    #returns days
+    return "asked: #{(hours/24).round} day(s) ago"
   end
 
-  if minutes < 1 #days
+  if minutes < 1
     return "asked: #{(minutes*60).round} seconds ago"
-    #returns seconds
+  elsif minutes >=60
+    return "asked: #{hours} hour(s) ago"
   else
-    return "asked: #{minutes} minutes ago"
-    #returns.minutes
+    return "asked: #{minutes} minute(s) ago"
   end
 end

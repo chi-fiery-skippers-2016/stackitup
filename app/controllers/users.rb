@@ -4,7 +4,7 @@ get "/users/new" do
 end
 
 post '/users' do
-  User.create(params)
+  User.create(params[:user])
   redirect '/login'
 end
 
