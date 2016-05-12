@@ -13,7 +13,7 @@
 <div class="container">
     <div class="tab-content" id="recent">
         <% @questions.each do |question|  %>
-            <div class="post"><!--Fix top border-->
+            <div class="post">
                 <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
 
                     <div class='metric_container'>
@@ -43,7 +43,7 @@
                         <% end %>
                         <% question.tags.each do |tag| %>
                         <span class="tag_box">
-                            <a href = "/taggings/<%= tag.id %>"><%= tag.name %></a>
+                            <a href = "/tags/<%= tag.id %>"><%= tag.name %></a>
                         </span>
                         <% end %>
                     </div>

@@ -1,1 +1,10 @@
-Build this pleaseeeeeee
+<div class="container">
+  <h1>Tags</h1>
+  <div class="tag_meta">
+    <% @tags.each do |tag| %>
+      <span class="tag_box">
+          <a href = "/tags/<%= tag.id %>"><%= tag.name %></a>
+      </span>
+      <% end %>
+  </div>
+</div>

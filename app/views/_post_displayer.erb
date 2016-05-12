@@ -1,7 +1,4 @@
-<div class="container">
-
-        <% @tagged_questions.each do |question|  %>
-                        <div class="post">
+            <div class="post">
                 <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
 
                     <div class='metric_container'>
@@ -42,5 +39,3 @@
                     </div>
             </div>
         <% end %>
-
-</div>
