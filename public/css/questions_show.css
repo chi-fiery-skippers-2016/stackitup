@@ -1,3 +1,9 @@
+.question_headers h4 {
+  display: inline;
+  padding-right: 5%;
+  color: gray;
+}
+
 .body_container {
   margin: 20px auto;
   width: 800px;
@@ -60,4 +66,11 @@
 .question_response a {
   display: inline;
   font-size: .9em;
+}
+
+.add_quack {
+  display: block;
+  margin-left: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }

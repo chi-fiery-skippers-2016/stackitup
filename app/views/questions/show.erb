@@ -1,8 +1,11 @@
 <div class="body_container">
   <h2> <%= @question.title %> </h2>
   <!-- css line -->
-  <h4> asked: <%= @question.created_at %>_________viewed: <%= @question.view_count %>_________active: <%= @question.updated_at %> </h4>
-
+  <div class="question_headers">
+    <h4> asked: <%= last_asked(@question.created_at) %> </h4>
+    <h4>viewed: <%= @question.view_count %></h4>
+    <h4>active: <%= @question.updated_at %> </h4>
+  </div>
   <!-- css line -->
   <div class="vote_arrows">
     <form>
@@ -44,7 +47,7 @@
     </div>
   <% end %>
 
-  <a href="#">add a quack</a>
+  <a class="add_quack" href="#">add a quack</a>
   <!-- add comment link goes here (need reputation to comment?)  -->
 </div>
 
