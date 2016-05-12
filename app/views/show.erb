@@ -66,9 +66,23 @@
     </div>
 
     <a href="#">add a quack</a>
+    <% for response in answer.responses %>
+      <div>
+        <p><%= response.body %> - </p>
+        <a href="#"><%= response.user.username %></a>
+        <p><%= response.created_at %></p>
+      </div>
+    <% end %>
 
-    <!-- add responses for each answer -->
+    <a href="#">add a comment</a>
 
-    <!-- add comment link goes here (need reputation to comment?)  -->
   <% end %>
+
+  <h4>Your Answer</h4>
+  <form action="/answers/new" id="answer_form">
+    <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
+    <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
+    <input type="submit">
+  </form>
+
 </div>
