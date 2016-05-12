@@ -11,6 +11,10 @@ trending -
 =end
 end
 
+get '/questions/new' do
+  erb :'questions/new'
+end
+
 get '/questions/:id' do
   @question = Question.find(params[:id])
   @answers = @question.sort('votes')
@@ -24,3 +28,5 @@ get '/questions/:id/:sort' do
   erb :show
   # AJAX THIS SHIT LATER
 end
+
+
