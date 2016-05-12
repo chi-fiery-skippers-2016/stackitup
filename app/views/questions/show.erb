@@ -5,11 +5,15 @@
 <div class="body_container">
   <!-- css line -->
   <div class="vote_arrows">
-    <form>
-      <i class="fa fa-arrow-up" aria-hidden="true"></i> <!-- rubber duck up -->
+    <form method="post" action="/questions/<%= @question.id %>/votes">
+      <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
+      <input type="hidden" name="direction" value="up">
     </form>
     <h3><%= @question.score %></h3>
-    <i class="fa fa-arrow-down" aria-hidden="true"></i> <!-- rubber duck down -->
+    <form method="post" action="/questions/<%= @question.id %>/votes">
+      <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
+      <input type="hidden" name="direction" value="down">
+    </form>
   </div>
 
   <p class="body"><%= @question.body %></p>
@@ -52,9 +56,9 @@
   <% for answer in @answers %>
 
     <div class="vote_arrows">
-      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+      <form><input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'></form>
       <h3><%= answer.score %></h3>
-      <i class="fa fa-arrow-down" aria-hidden="true"></i>
+      <form><input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'></form>
     </div>
 
     <p class="body"><%= answer.body %></p>

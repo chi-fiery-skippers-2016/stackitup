@@ -24,3 +24,7 @@ post '/questions' do
   #create new question with params
   erb :'questions/index'
 end
+
+post '/questions/:id/votes' do
+
+end
