@@ -36,13 +36,15 @@
 
                     <div class="tag_meta">
                         <% question.tags.each do |tag| %>
-                        <a href = "#"><%= tag.name %></a>
+                        <span class="tag_box">
+                            <a href = "#"><%= tag.name %></a>
+                        </span>
                         <% end %>
                     </div>
 
                     <div class="post_meta">
                         <%= question.author.username %>
-                        <%= question.created_at %>
+                        <%= question.created_at.strftime("%m/%d/%Y") %>
                     </div>
             </div>
         <% end %>
