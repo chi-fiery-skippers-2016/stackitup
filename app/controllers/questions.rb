@@ -4,18 +4,39 @@ get '/questions' do
 end
 
 get '/questions/:id' do
+  @question = Question.find(params[:id])
+  @answers = @question.answers
   erb :show
 end
 
 get '/questions/:id/:sort' do
-  @question = Question.find(params[:id])
-  @answers = @questions.answers
-
+  puts "CONTROLLER"
+  puts params
+  p @question = Question.find(params[:id])
+  p @answers = @question.answers
   case params[:sort]
   when "oldest"
     @answers = @answers.sort{|x,y| x.created_at <=> y.created_at}
   when "active"
-    @answers = @answers.sort{|x,y| y.response.last.created_at <=> x.response.last.created_at}
+    # puts @answers
+    puts @answers[0].responses
+    # if @answers.length <= 1
+    #   return @answers
+    # end
+    # @answers = @answers.sort do |x,y|
+    #   if x.responses.nil? && y.responses.nil?
+    #     puts "well fuck you"
+    #   elsif x.responses.nil?
+    #     y <=> x
+    #   elsif y.responses.nil?
+    #     x <=> y
+    #   else
+    #     # puts y.responses
+    #     # puts x.responses
+    #     y.responses.last.created_at <=> x.responses.last.created_at
+    #   end
+    #   @answers
+    # end
   when "votes"
     @answers = @answers.sort{|x,y| y.votes.count <=> x.votes.count}
   end

@@ -1,14 +1,13 @@
-
 <h2> <%= @question.title %> </h2>
 <!-- css line -->
-<h4> asked: <%= @question.created_at %> | viewed: <%= @question.view_count %> | active: <%= @question.updated_at %> </h4>
+<h4> asked: <%= @question.created_at %>_________viewed: <%= @question.view_count %>_________active: <%= @question.updated_at %> </h4>
 
 <div class="body_container">
   <!-- css line -->
   <div class="vote_arrows">
-    <img src="#">
+    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck up -->
     <h3><%= @question.score %></h3>
-    <img src="#">
+    <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'> <!-- rubber duck down -->
   </div>
 
   <p class="body"><%= @question.body %></p>
@@ -41,18 +40,19 @@
   <div class="answer_sort">
     <h4><%= @question.answers.count %></h4>
     <ul class="tabs">
-        <li><a href="/question/:id/active">Active</a></li>
-        <li><a href="/question/:id/oldest">Oldest</a></li>
-        <li class="active"><a href="/question/:id/votes">Votes</a></li>
+        <li><a href="/questions/<%= @question.id %>/active">Active</a></li>
+        <li><a href="/questions/<%= @question.id %>/oldest">Oldest</a></li>
+        <li class="active"><a href="/questions/<%= @question.id %>/votes">Votes</a></li>
     </ul>
   </div>
+
 
   <% for answer in @answers %>
 
     <div class="vote_arrows">
-      <img src="#">
+      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
       <h3><%= answer.score %></h3>
-      <img src="#">
+      <img src='https://s-media-cache-ak0.pinimg.com/736x/0c/a1/1d/0ca11d521bb04f0283b652c9fb824bb6.jpg'>
     </div>
 
     <p class="body"><%= answer.body %></p>
@@ -61,7 +61,8 @@
 
     <div class="user">
       <p>answered: <%= answer.created_at %></p>
-      <a href"/users/<%= @question.author_id %>"> <%= answer.the_one_who_answered_id.username %> </a>
+      <!-- NEED TO CHANGE THIS TO USERNAME -->
+      <a href"/users/<%= @question.author_id %>"> <%= answer.the_one_who_answers_id %> </a>
       <!-- reputation -->
     </div>
 
