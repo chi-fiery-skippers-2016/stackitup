@@ -52,7 +52,7 @@
     float:left;
 }
 
-.scorebox{
+.scorebox {
     display: inline-block;
     min-width: 44px;
     margin: 0 3px 0 0;
@@ -67,6 +67,7 @@
 .tag_meta {
     display: block;
 }
+
 .tag_meta a {
     margin: 0 3px 0 0;
 }
@@ -86,26 +87,41 @@ header {
 }
 
 nav {
-    margin-left:
+    margin-top: 0;
+    background-color: rgb(100,100,100);
     display: inline-block;
+    width: 100%;
 }
 
-.menu {
+nav ul {
+    list-style-type: none;
+    margin: 0;
     padding: 0;
-    text-align: center;
+    overflow: hidden;
+    background-color: #333;
 }
-.menu li {
-    display: inline;
-}
-.menu li a {
-    background-color: #1EFFC7;
-    color: navy;
-    padding: 0.5%;
+
+nav li {
+    float: right;
     text-decoration: none;
-    border-radius: 4px;
-    font-weight: bold;
 }
-.menu li a:hover {
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
     background-color: #FF2442;
 }
 
+.tag_meta a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: rgb(180, 220, 220);
+    padding: 1px
+    color: rgb(255,100,100) !important;
+}

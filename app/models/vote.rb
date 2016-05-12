@@ -2,6 +2,8 @@ class Vote < ActiveRecord::Base
   belongs_to :voteable, polymorphic: true
   belongs_to :voter, class_name: "User"
 
+  alias :question :voteable
+
   # before_save :add_score
 
  # change Q/A score upon vote

@@ -3,7 +3,7 @@ class CreateAnswers < ActiveRecord::Migration
     create_table :answers do |t|
       t.string :body, null:false
       t.integer :question_id, null:false
-      t.integer :the_one_who_answers_id, null:false
+      t.integer :theOneWhoAnswers_id, null:false
       t.boolean :best?
       t.integer :score, default: 0
 

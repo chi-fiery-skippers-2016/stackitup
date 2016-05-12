@@ -22,4 +22,6 @@ class User < ActiveRecord::Base
   def validate_password
     errors.add(:password, 'too short') if @plaintext_password.length < 6
   end
+  has_many :responses
+  has_many :votes
 end

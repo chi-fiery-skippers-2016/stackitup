@@ -6,11 +6,15 @@
         <li><a href="#">Trending</a></li>
     </ul>
 </div>
+<!-- 1) Color code the metric counter boxes 2) Add link to tags for viewing all questions with selected tag
+3) Color scheme generator with DUCK, FARFETCHED 4) Typography 
+5) Refine last answered helper function, add logic for seconds, minutes, hours, days
+6) Determine optimal width: ~1080px 7) AJAX for tabs-->
 
 <div class="container">
     <div class="tab-content" id="recent">
         <% @questions.each do |question|  %>
-            <div class="post">
+            <div class="post"><!--Fix top border-->
                 <h3><%= question.title %></h3>
 
                     <div class='metric_container'>
@@ -36,13 +40,15 @@
 
                     <div class="tag_meta">
                         <% question.tags.each do |tag| %>
-                        <a href = "#"><%= tag.name %></a>
+                        <span class="tag_box">
+                            <a href = "#"><%= tag.name %></a>
+                        </span>
                         <% end %>
                     </div>
 
                     <div class="post_meta">
-                        <%= question.author.username %>
-                        <%= question.created_at %>
+                        <span>posted by: <%= question.author.username %></span>
+                        <span> last asked: <%= last_asked(question.created_at) %> hours ago </span>
                     </div>
             </div>
         <% end %>
