@@ -1,6 +1,6 @@
 
-get "/users/new" do
-  erb :register
+get '/users/new' do
+  erb :'sessions/register'
 end
 
 post '/users' do

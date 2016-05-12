@@ -1,9 +1,9 @@
 get '/login' do
   if request.xhr?
     status 200
-    erb :'_login', :layout => false
+    erb :'/sessions/_login', :layout => false
   else
-    erb :'_login' 
+    erb :'sessions/_login'
   end
 end
 

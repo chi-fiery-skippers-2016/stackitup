@@ -43,7 +43,7 @@
                         <% end %>
                         <% question.tags.each do |tag| %>
                         <span class="tag_box">
-                            <a href = "#"><%= tag.name %></a>
+                            <a href = "/taggings/<%= tag.id %>"><%= tag.name %></a>
                         </span>
                         <% end %>
                     </div>
