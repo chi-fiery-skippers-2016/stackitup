@@ -33,8 +33,7 @@ end
 30.times do
   response = Response.create!(
     body: Faker::StarWars.quote,
-    respondable_type: rand(2) == 1 ? 'Question' : 'Answer',
-    respondable_id: rand(10) + 1,
+    respondable: rand(2) == 1 ? Question.all.sample : Answer.all.sample,
     user_id: rand(3) + 1
     )
 end
@@ -48,11 +47,29 @@ end
     )
 end
 
-15.times do
+num = rand(3)
+if num == 0
+  15.times do
   vote = Vote.create!(
-    voteable_type: rand(2) == 1 ? 'Question' : 'Answer',
-    voteable_id: rand(10) + 1,
+    voteable: Question.all.sample,
     voter_id: rand(3) + 1,
     up?: rand(2) == 1 ? true : false
     )
+  end
+elsif num == 1
+  15.times do
+  vote = Vote.create!(
+    voteable: Answer.all.sample,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
+    )
+  end
+else
+  15.times do
+  vote = Vote.create!(
+    voteable: Response.all.sample,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
+    )
+  end
 end
