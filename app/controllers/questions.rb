@@ -4,6 +4,10 @@ get '/questions' do
   erb :'questions/index'
 end
 
+get '/questions/new' do
+  erb :'questions/new'
+end
+
   # AJAX THIS SHIT LATER
 get '/questions/:id' do
   @question = Question.find(params[:id])

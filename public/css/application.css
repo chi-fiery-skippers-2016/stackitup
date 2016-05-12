@@ -4,158 +4,24 @@
     font-size: 27px;
     line-height: 60px;
 }
-
 header {
     display: inline-block;
 }
+
 /*rgb(209,224,195) - grey
 rgb(235,98,20) - organge
 rgb(255, 247, 64) - yellow*/
-nav {
-    margin-top: 0;
-    display: inline-block;
-    width: 100%;
-    height: 60px;
-}
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: rgb(235,98,20);
-}
-
-nav li {
-    position: relative;
-    float: right;
-    text-decoration: none;
-}
-
-.header_links{
+.header_links {
     font-size: 20px;
     line-height: 60px;
 }
-
-nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding-right: 16px;
-    padding-left: 16px;
-    text-decoration: none;
-}
-
-nav li a:hover {
-    background-color: #FF950D;
-}
-
-.tabs {
-    float: left;
-    border-bottom: 1px solid #ccc;
-    width: 95%;
-    margin-bottom: 16px;
-    list-style: none;
-}
-
-.tabs li {
-    float: left;
-    margin-right: 16px;
-    padding: 10px 15px;
-    height: 30px;
-    line-height: 30px;
-}
-
-.tabs li a {
-    color: #666;
-    font-family: Helvetica, Arial, sans-serif;
-    text-decoration: none;
-}
-
-.tabs li.active {
-    border: 1px solid #ccc;
-    border-bottom: 1px solid rgb(209,224,195);
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
-    margin-bottom: -1px;
-    height: 31px;
-    padding: 9px 14px;
-}
-
-.tabs li.active a {
-    color: black;
-    text-decoration: none;
-    border-bottom: none;
-}
-
-
-.tab-content {
-    /*display: none;*/
-    width: 100%;
-    margin: 5%, auto;
-}
-
 .container {
     margin: 20px auto;
     width: 800px;
 }
 
-.metric_container {
-    width: 25%;
-    display: inline-block;
-    float:left;
-}
-
-.post a {
-    text-decoration: none;
-    color: black;
-}
-
-.post a:hover {
-    color: rgb(235,98,20);
-}
-
-.scorebox {
-    display: inline-block;
-    min-width: 44px;
-    margin: 0 3px 0 0;
-    height: 38px;
-    font-size: 11px;
-    text-align: center;
-    vertical-align: middle;
-    outline: 1px solid black;
-    line-height: 1;
-}
-
-.tag_meta {
-    display: block;
-}
-
-.metric_counter {
-    margin: 6px 0 3px 0;
-}
-
-.post {
-    border-bottom: 1px solid gray;
-    margin: 10px 0px 10px 0px;
-    padding-bottom: 30px;
-}
-
-.tag_meta a {
-    margin: 0 3px 5px 0;
-    display: inline-block;
-    text-decoration: none;
-    background-color: rgb(255, 247, 64);
-    padding: 5px;
-    color: rgb(255,100,100) !important;
-}
-
-#time_asked{
-    float:right;
-    font-size: 12px;
-    font-weight: bold;
-}
 
 body {
-    background-color: rgb(209,224,195);
+    background-color: rgb(209, 224, 195);
 }
