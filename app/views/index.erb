@@ -5,38 +5,46 @@
         <li><a href="#">Highest Votes</a></li>
         <li><a href="#">Trending</a></li>
     </ul>
+</div>
 
+<div class="container">
     <div class="tab-content" id="recent">
-      <% @questions.each do |question|  %>
-        <h3><%= question.title %></h3>
-        <%= question.body %>
-        <%= question.author %>
-        <%= question.view_count %>
-        <%= question.votes.count %>
-        <%= question.answers.count %>
-        <% question.tags.each do |tag| %>
-        <%= tag.name %>
+        <% @questions.each do |question|  %>
+            <div class="post">
+                <h3><%= question.title %></h3>
+
+                    <div class='metric_container'>
+                        <div class='scorebox'>
+                            <div class="metric_counter">
+                                <%= question.votes.count %>
+                            </div>
+                            <span>votes</span>
+                        </div>
+                        <div class='scorebox'>
+                            <div class="metric_counter">
+                                <%= question.answers.count %>
+                            </div>
+                            <span>answers</span>
+                        </div>
+                        <div class='scorebox'>
+                            <div class="metric_counter">
+                                <%= question.view_count %>
+                            </div>
+                            <span>views</span>
+                        </div>
+                    </div>
+
+                    <div class="tag_meta">
+                        <% question.tags.each do |tag| %>
+                        <a href = "#"><%= tag.name %></a>
+                        <% end %>
+                    </div>
+
+                    <div class="post_meta">
+                        <%= question.author.username %>
+                        <%= question.created_at %>
+                    </div>
+            </div>
         <% end %>
-        <%= question.created_at %>
-        <p>=========================================</p>
-    <% end %>
-    </div>
-
-    <div class="tab-content" id="highest_votes">
-      <% @questions.each do |question|  %>
-        <%= question.title %>
-        <%= question.body %>
-        <%= question.author_id %>
-        <%= question.view_count %>
-    <% end %>
-    </div>
-
-    <div class="tab-content" id="trending">
-      <% @questions.each do |question|  %>
-        <%= question.title %>
-        <%= question.body %>
-        <%= question.author_id %>
-        <%= question.view_count %>
-    <% end %>
     </div>
 </div>

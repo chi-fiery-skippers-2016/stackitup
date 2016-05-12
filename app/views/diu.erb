@@ -1,0 +1,17 @@
+ <div class="tab-content" id="highest_votes">
+      <% @questions.each do |question|  %>
+        <%= question.title %>
+        <%= question.body %>
+        <%= question.author_id %>
+        <%= question.view_count %>
+    <% end %>
+    </div>
+
+    <div class="tab-content" id="trending">
+      <% @questions.each do |question|  %>
+        <%= question.title %>
+        <%= question.body %>
+        <%= question.author_id %>
+        <%= question.view_count %>
+    <% end %>
+    </div>
