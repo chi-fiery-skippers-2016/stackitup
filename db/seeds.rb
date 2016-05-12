@@ -12,22 +12,12 @@ end
     )
 end
 
-15.times do
-  vote = Vote.create!(
-    voteable_type: rand(2) == 1 ? 'question' : 'answer',
-    voteable_id: rand(10) + 1,
-    voter_id: rand(3) + 1,
-    up?: rand(2) == 1 ? true : false
-    )
-end
-
-
-30.times do
-  response = Response.create!(
-    body: Faker::StarWars.quote,
-    respondable_type: rand(2) == 1 ? 'question' : 'answer',
-    respondable_id: rand(10) + 1,
-    user_id: rand(3) + 1
+10.times do
+  question = Question.create!(
+    title: Faker::StarWars.quote,
+    body: Faker::Hipster.paragraph,
+    author_id: rand(3) + 1,
+    view_count: rand(1000)
     )
 end
 
@@ -40,20 +30,29 @@ end
     )
 end
 
-## CAN I COMMENT OR ANSWER ON MY OWN POST??
-
-10.times do
-  question = Question.create!(
-    title: Faker::StarWars.quote,
-    body: Faker::Hipster.paragraph,
-    author_id: rand(3) + 1,
-    view_count: rand(1000)
+30.times do
+  response = Response.create!(
+    body: Faker::StarWars.quote,
+    respondable_type: rand(2) == 1 ? 'Question' : 'Answer',
+    respondable_id: rand(10) + 1,
+    user_id: rand(3) + 1
     )
 end
+## CAN I COMMENT OR ANSWER ON MY OWN POST??
+
 
 20.times do
   tagging = Tagging.create!(
      tag_id: rand(20) + 1,
      question_id: rand(10) + 1
+    )
+end
+
+15.times do
+  vote = Vote.create!(
+    voteable_type: rand(2) == 1 ? 'Question' : 'Answer',
+    voteable_id: rand(10) + 1,
+    voter_id: rand(3) + 1,
+    up?: rand(2) == 1 ? true : false
     )
 end
