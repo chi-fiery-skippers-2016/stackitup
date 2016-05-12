@@ -19,6 +19,7 @@ end
     author_id: rand(3) + 1,
     view_count: rand(1000)
     )
+  sleep(0.1)
 end
 
 10.times do
@@ -28,6 +29,7 @@ end
     theOneWhoAnswers_id: rand(3) + 1,
     best?: false
     )
+  sleep(0.1)
 end
 
 30.times do
@@ -36,6 +38,7 @@ end
     respondable: rand(2) == 1 ? Question.all.sample : Answer.all.sample,
     user_id: rand(3) + 1
     )
+  sleep(0.1)
 end
 ## CAN I COMMENT OR ANSWER ON MY OWN POST??
 
