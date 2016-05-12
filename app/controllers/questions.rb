@@ -23,10 +23,13 @@ post '/questions' do
 end
 
 post '/questions/:id/votes' do
-  authenticate!
+  authenticate! # THIS SHOULD REALLY GIVE ERROR MESSAGE INSTEAD
   @question = Question.find(params[:id])
-  direction = params[:direction] == 'up' ? true : false
-  Vote.create!(voteable: @question, voter_id: current_user.id, up?: direction)
   @answers = @question.answers
+  answer = Answer.find(params[:answer_id]) if params[:answer_id]
+  voteable = params[:voteable] == 'question' ? @question : answer
+  direction = params[:direction] == 'up' ? true : false
+
+  Vote.create!(voteable: voteable, voter_id: current_user.id, up?: direction)
   erb :'questions/show'
 end

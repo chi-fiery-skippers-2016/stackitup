@@ -8,11 +8,13 @@
     <form method="post" action="/questions/<%= @question.id %>/votes">
       <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
       <input type="hidden" name="direction" value="up">
+      <input type="hidden" name="voteable" value="question">
     </form>
     <h3><%= @question.score %></h3>
     <form method="post" action="/questions/<%= @question.id %>/votes">
       <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
       <input type="hidden" name="direction" value="down">
+      <input type="hidden" name="voteable" value="question">
     </form>
   </div>
 
@@ -56,9 +58,19 @@
   <% for answer in @answers %>
 
     <div class="vote_arrows">
-      <form><input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'></form>
+      <form method="post" action="/questions/<%= @question.id %>/votes">
+        <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
+        <input type="hidden" name="direction" value="up">
+        <input type="hidden" name="voteable" value="answer">
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
       <h3><%= answer.score %></h3>
-      <form><input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'></form>
+      <form method="post" action="/questions/<%= @question.id %>/votes">
+        <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
+        <input type="hidden" name="direction" value="down">
+        <input type="hidden" name="voteable" value="answer">
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
     </div>
 
     <p class="body"><%= answer.body %></p>
