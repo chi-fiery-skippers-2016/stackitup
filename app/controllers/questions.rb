@@ -5,6 +5,7 @@ get '/questions' do
 end
 
 get '/questions/new' do
+  authenticate!
   erb :'questions/new'
 end
 
@@ -16,15 +17,16 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
-get '/questions/new' do
-  erb :'questions/new'
-end
-
 post '/questions' do
   #create new question with params
   erb :'questions/index'
 end
 
 post '/questions/:id/votes' do
-
+  authenticate!
+  @question = Question.find(params[:id])
+  direction = params[:direction] == 'up' ? true : false
+  Vote.create!(voteable: @question, voter_id: current_user.id, up?: direction)
+  @answers = @question.answers
+  erb :'questions/show'
 end

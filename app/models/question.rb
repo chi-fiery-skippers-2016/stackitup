@@ -60,5 +60,4 @@ class Question < ActiveRecord::Base
     self.answers.sort{ |answer1, answer2| answer2.votes.count <=> answer1.votes.count }
   end
 
-
 end
