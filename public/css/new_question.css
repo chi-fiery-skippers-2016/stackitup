@@ -1,0 +1,18 @@
+input, textarea {
+  margin: 0px 0px 20px 0px;
+}
+
+input {
+  height: 40px;
+  width: 817px;
+  font-size: 20px;
+}
+
+label {
+  display:block;
+  font-size: 25px;
+}
+
+#button {
+  width: 100px;
+}

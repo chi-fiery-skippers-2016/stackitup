@@ -1,14 +1,12 @@
 <div class="container">
-
-  <form method="post" action="/question">
-    <input type="text" name="question[title]" placeholder="title">
-    <input type="text" name="question[body]" placeholder="body">
-    <input type="text" name="question[tags]" placeholder="tags(separate by comma)">
-    <input type="submit">
+<h1>Ask a Question</h1>
+  <form id="new_question" method="post" action="/questions">
+    <label for="title">Title</label>
+      <input type="text" name="question[title]">
+    <textarea rows="10" cols="100" name="question[body]" form="new_question"></textarea>
+    <label for="tags">Tags</label>
+      <input type="text" name="question[tag_names]" placeholder="enter a tag (e.g.,  wordpress), max 5 tags, separated by commas">
+      <input type="hidden" name="question[author_id]" value='5'>
+    <input id="button" type="submit" value="Post">
   </form>
-
-
-
-
-
 </div>

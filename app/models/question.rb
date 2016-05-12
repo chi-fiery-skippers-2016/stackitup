@@ -60,5 +60,23 @@ class Question < ActiveRecord::Base
     self.answers.sort{ |answer1, answer2| answer2.votes.count <=> answer1.votes.count }
   end
 
+  def tag_names=(string_list)
+    string_list.strip!
+    string_list_array = string_list.split(',')
+    tag_group = []
+
+    string_list_array.each do |tag_name|
+    if Tag.where(name: tag_name) == []
+      new_tag = Tag.new(name: tag_name)
+      new_tag.save
+      tag_group << new_tag
+    else
+      tag_group << Tag.find_by(name: tag_name)
+    end
+    tag_id: tag_id, question_id: params[:question][:id])
+  end
+    self.tags = tag_group
+  end
+
 
 end
