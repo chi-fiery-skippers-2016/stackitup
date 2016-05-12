@@ -1,0 +1,32 @@
+.post {
+    border-bottom: 1px solid gray;
+    margin: 10px 0px 10px 0px;
+    padding-bottom: 30px;
+}
+.post a {
+    text-decoration: none;
+    color: black;
+}
+.post a:hover {
+    color: rgb(235, 98, 20);
+}
+
+.metric_counter {
+    margin: 6px 0 3px 0;
+}
+.scorebox {
+    display: inline-block;
+    min-width: 44px;
+    margin: 0 3px 0 0;
+    height: 38px;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    outline: 1px solid black;
+    line-height: 1;
+}
+.metric_container {
+   width: 25%;
+   display: inline-block;
+   float:left;
+}
