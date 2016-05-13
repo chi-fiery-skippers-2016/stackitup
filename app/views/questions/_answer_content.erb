@@ -1,0 +1,42 @@
+<div class="answer_content">
+  <% for answer in @answers %>
+
+    <div class="vote_arrows">
+      <form method="post" action="/questions/<%= @question.id %>/votes">
+        <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
+        <input type="hidden" name="direction" value="up">
+        <input type="hidden" name="voteable" value="answer">
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
+      <h3><%= answer.score %></h3>
+      <form method="post" action="/questions/<%= @question.id %>/votes">
+        <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
+        <input type="hidden" name="direction" value="down">
+        <input type="hidden" name="voteable" value="answer">
+        <input type="hidden" name="answer_id" value="<%= answer.id %>">
+      </form>
+    </div>
+
+    <p class="body"><%= answer.body %></p>
+
+    <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+
+    <div class="user">
+      <p>answered: <%= last_time(answer.created_at) %></p>
+      <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
+      <!-- reputation -->
+    </div>
+
+    <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
+    <% for response in answer.responses %>
+      <div>
+        <p><%= response.body %> - </p>
+        <a href="#"><%= response.user.username %></a>
+        <p><%= response.created_at %></p>
+      </div>
+    <% end %>
+
+    <a href="#">add a comment</a>
+
+  <% end %>
+</div>

@@ -60,17 +60,16 @@
 <div class="answer_container">
 
   <% if !@question.answers.empty? %>
-    <div class="answer_container">
-      <div class="answer_sort">
-        <h4><%= @question.answers.count %> Answers</h4>
-        <ul class="tabs">
-          <li><a href="/questions/<%= @question.id %>?sort=active">Active</a></li>
-          <li><a href="/questions/<%= @question.id %>/oldest">Oldest</a></li>
-          <li class="active"><a href="/questions/<%= @question.id %>/votes">Votes</a></li>
-        </ul>
-      </div>
+    <div class="answer_sort">
+      <h4><%= @question.answers.count %> Answers</h4>
+      <ul class="tabs">
+        <li><a href="/questions/<%= @question.id %>?sort=active">Active</a></li>
+        <li><a href="/questions/<%= @question.id %>?sort=oldest">Oldest</a></li>
+        <li class="active"><a href="/questions/<%= @question.id %>?sort=votes">Votes</a></li>
+      </ul>
+    </div>
 
-
+    <div class="answer_content">
       <% for answer in @answers %>
 
         <div class="vote_arrows">
