@@ -101,14 +101,14 @@
 
         <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
         <% for response in answer.responses %>
-          <div>
+          <div class ='uncle_scrooge'>
             <p><%= response.body %> - </p>
             <a href="#"><%= response.user.username %></a>
             <p><%= response.created_at %></p>
           </div>
         <% end %>
 
-        <a href="#">add a comment</a>
+        <a class='donald'href="#">add a comment</a>
 
       <% end %>
     </div>
@@ -117,7 +117,7 @@
   <h4>Your Answer</h4>
   <form method='post' action="/answers" id="answer_form">
     <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
-    <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
+    <textarea type="textarea" rows="4" cols="97" name="answer_form" placeholder='write your answer here'></textarea>
     <input type="submit">
   </form>
 </div>

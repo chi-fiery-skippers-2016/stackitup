@@ -15,7 +15,9 @@
   display: inline-block;
   float:left;
 }
-
+.donald {
+  margin-left: 45px;
+}
 .body {
   margin-top: 0px;
   display: block;
@@ -41,6 +43,7 @@
   display: inline;
   text-decoration:none;
   color: gray;
+  margin-left: 45px;
 }
 
 .user {
@@ -60,6 +63,19 @@
 
 }
 
+.user a,.question_response a,.add_quack,.uncle_scrooge a,.donald {
+    text-decoration: underline;
+    color: black;
+}
+
+.user a:hover,.question_response a:hover,.add_quack:hover,.uncle_scrooge a:hover,.donald:hover{
+  color: rgb(235, 98, 20);
+}
+
+.uncle_scrooge{
+  margin-left: 40px;
+  margin-bottom: 50px;
+}
 
 .question_response p {
   display:inline;
@@ -73,7 +89,7 @@
 
 .add_quack {
   display: block;
-  margin-left: 5%;
+  margin-left: 80px;
   padding-top: 2%;
   padding-bottom: 2%;
 }
@@ -85,5 +101,10 @@
 }
 
 .answer_container form {
-  margin-left:30%;
+  /*margin-left:30%;*/
+}
+
+.answer_container form input {
+  width: 80px;
+  float: right;
 }
