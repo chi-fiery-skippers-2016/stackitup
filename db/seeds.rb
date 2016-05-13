@@ -6,9 +6,9 @@
     )
 end
 
-20.times do
+5.times do
   tag = Tag.create!(
-    name: Faker::Book.genre
+    name: Faker::Team.creature
     )
 end
 

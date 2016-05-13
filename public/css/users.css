@@ -1,0 +1,19 @@
+h1{
+  line-height: 5px;
+  margin-bottom: 1px;
+}
+
+h2{
+  font-size: 25px;
+  margin-top: 50px;
+}
+
+.profile_top{
+  display: inline-block;
+  height: 10px;
+  margin-bottom: 10px;
+}
+
+.answer_info{
+  float: right;
+}

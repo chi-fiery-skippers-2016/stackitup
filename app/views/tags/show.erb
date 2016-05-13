@@ -1,5 +1,5 @@
 <div class="container">
-
+    <h1> Questions related to "<%=@tag.name%>" </h2>
         <% @tagged_questions.each do |question|  %>
                         <div class="post">
                 <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>

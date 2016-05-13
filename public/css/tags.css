@@ -2,6 +2,10 @@
     display: block;
 }
 
+h1{
+  margin-bottom: 30px;
+}
+
 .tag_meta a {
     border-radius: 5px;
     margin: 0 3px 5px 0;
