@@ -1,6 +1,10 @@
 get '/tags' do
   @tags = Tag.all
-  erb :'tags/index'
+  if request.xhr?
+    erb :'tags/index', locals: {tags: @tags}, layout:false
+  else
+    erb :'tags/index'
+  end
 end
 
 get '/tags/:id' do
