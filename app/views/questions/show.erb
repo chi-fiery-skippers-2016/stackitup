@@ -115,8 +115,8 @@
 
   <h4>Your Answer</h4>
   <form method='post' action="/answers" id="answer_form">
-    <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
-    <textarea type="textarea" rows="4" cols="97" name="answer_form" placeholder='write your answer here'></textarea>
+    <textarea type="textarea" rows="4" cols="97" name="body" placeholder='write your answer here'></textarea>
+    <input type='hidden' name='question_id' value='<%= @question.id %>'>
     <input type="submit">
   </form>
 </div>

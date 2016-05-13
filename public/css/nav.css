@@ -27,3 +27,17 @@ nav li a {
 nav li a:hover {
     background-color: #FF950D;
 }
+
+#wabam {
+    margin-right: 2%;
+    display: inline;
+    float: right;
+    margin-top: 18px;
+}
+
+#wabam input {
+    width: 150px;
+    height: 30px;
+    box-sizing: border-box;
+    padding-left: 2%;
+}

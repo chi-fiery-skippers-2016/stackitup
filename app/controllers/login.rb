@@ -3,7 +3,7 @@ get '/login' do
     status 200
     erb :'/sessions/_login', :layout => false
   else
-    erb :'sessions/_login'
+    erb :'sessions/login'
   end
 end
 
