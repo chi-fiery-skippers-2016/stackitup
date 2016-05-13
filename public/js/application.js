@@ -57,7 +57,6 @@ $(document).ready(function() {
       password = $('#wabam input[name=password]').val()
       title = $('.body_container h2').html();
       var url = $('#wabam').attr("action");
-      console.log(url);
       $.ajax({
         method: "POST",
         url: url,
@@ -83,10 +82,7 @@ $(document).ready(function() {
       data: { body: body, question_id: question_id }
     })
     .done(function(response){
-      console.log("I'm done")
-      // add new answer
       $('div.answer_content').append(response);
-      // clear answer form
       $('form#answer_form textarea').val("")
     })
 
