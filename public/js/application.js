@@ -49,23 +49,38 @@ $(document).ready(function() {
       $('nav ul').append(response);
     })
 
-  $('body').on('submit', '#wabam', function(event){
-    event.preventDefault();
-    email = $('#wabam input[name=email]').val()
-    password = $('#wabam input[name=password]').val()
-    title = $('.body_container h2').html();
-    var url = $('#wabam').attr("action");
-    console.log(url);
+    $('body').on('submit', '#wabam', function(event){
+      event.preventDefault();
+      email = $('#wabam input[name=email]').val()
+      password = $('#wabam input[name=password]').val()
+      title = $('.body_container h2').html();
+      var url = $('#wabam').attr("action");
+      console.log(url);
+      $.ajax({
+        method: "POST",
+        url: url,
+        data: { title: title, email: email, password: password }
+      })
+      .done(function(response){
+        $('body').remove();
+        $('html').append(response);
+      })
+    })
+  });
+
+  $('form#answer_form').on('submit', function(){
+    body = $('form#answer_form textarea[name=body]').val()
+    question_id = '?'
+    url = $('form#answer_form').attr('action')
     $.ajax({
-      method: "POST",
+      method: 'POST',
       url: url,
-      data: { title: title, email: email, password: password }
+      data: { body: body }
     })
     .done(function(response){
-      $('body').remove();
-      $('html').append(response);
+      // add new answer
+      // clear answer form
     })
-  })
 
   });
 });

@@ -11,10 +11,19 @@ post '/login' do
   @user = User.find_by(email: params[:email])
   if @user.authenticate(params[:password])
     session[:user_id] = @user.id
+    p "i'm authenticate"
     if request.xhr?
-      @question = Question.find_by(title: params[:title])
-      @answers = @question.answers
-      erb :'/questions/show'
+      p "i'm ajax"
+      if params[:title]
+        p "i have a title"
+        @question = Question.find_by(title: params[:title])
+        @answers = @question.answers
+        erb :'/questions/show'
+      else
+        p "i have no title"
+        @questions = Question.all
+        erb :'/questions/index', locals: {questions: @questions}
+      end
     else
       redirect '/'
     end
