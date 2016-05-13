@@ -1,6 +1,4 @@
 get '/questions' do
-  puts params
-  puts params[:sort]
   sort_by = params[:sort] || 'recent'
   @questions = Question.sort_questions(sort_by)
 
@@ -16,14 +14,10 @@ get '/questions/new' do
   erb :'questions/new'
 end
 
-  # AJAX THIS SHIT LATER
 get '/questions/:id' do
-  puts params
   @question = Question.find(params[:id])
   sort_by = params[:sort] || 'votes'
   @answers = @question.sort_answers(sort_by)
-  puts @question
-  puts @answers
 
   if request.xhr?
     erb :"questions/_answer_content", locals: { question: @question, answers: @answers }, layout:false

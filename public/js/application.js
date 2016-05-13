@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+  // change /questions tabs
   $('.container > .tabs a').on('click', function(event){
     event.preventDefault();
     var li = $(this).parent();
@@ -18,6 +19,7 @@ $(document).ready(function() {
     })
   });
 
+  // change /questions/:id tabs
   $('.answer_sort .tabs a').on('click', function(event){
     event.preventDefault();
     var li = $(this).parent();
@@ -36,11 +38,10 @@ $(document).ready(function() {
     })
   });
 
+  // get log in fields to show
   $('.header_links:nth-child(2) a').on('click', function(){
     event.preventDefault();
     var url = $(this).attr("href");
-    console.log(this)
-    console.log(url)
     $.ajax({
       url: url,
     })
@@ -49,13 +50,13 @@ $(document).ready(function() {
       $('nav ul').append(response);
     })
 
+    // submit a log in
     $('body').on('submit', '#wabam', function(event){
       event.preventDefault();
       email = $('#wabam input[name=email]').val()
       password = $('#wabam input[name=password]').val()
       title = $('.body_container h2').html();
       var url = $('#wabam').attr("action");
-      console.log(url);
       $.ajax({
         method: "POST",
         url: url,
@@ -68,18 +69,21 @@ $(document).ready(function() {
     })
   });
 
+  // submit answer on /questions/:id page
   $('form#answer_form').on('submit', function(){
-    body = $('form#answer_form textarea[name=body]').val()
-    question_id = '?'
-    url = $('form#answer_form').attr('action')
+    event.preventDefault();
+    var form = $(this)
+    var body = $('form#answer_form textarea[name=body]').val()
+    var question_id = $('form#answer_form input[name=question_id]').val()
+    var url = $('form#answer_form').attr('action')
     $.ajax({
       method: 'POST',
       url: url,
-      data: { body: body }
+      data: { body: body, question_id: question_id }
     })
     .done(function(response){
-      // add new answer
-      // clear answer form
+      $('div.answer_content').append(response);
+      $('form#answer_form textarea').val("")
     })
 
   });
