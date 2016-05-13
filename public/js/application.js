@@ -36,6 +36,18 @@ $(document).ready(function() {
     })
   });
 
+  $('.header_links:nth-child(2) a').on('click', function(){
+    event.preventDefault();
+    var url = $(this).attr("href");
+    console.log(this)
+    console.log(url)
+    $.ajax({
+      url: url
+    })
+    .done(function(response){
+      $('.header_links').remove();
+      $('nav ul').append(response);
+    })
 
-
+  });
 });
