@@ -7,7 +7,7 @@ def last_asked(time)
   end
 
   if minutes < 1
-    return "asked: #{(minutes*60).round} seconds ago"
+    return "asked: 12 seconds ago"
   elsif minutes >=60
     return "asked: #{hours} hour(s) ago"
   else

@@ -4,13 +4,12 @@
     padding-bottom: 30px;
 }
 .post a {
-    text-decoration: none;
+    text-decoration: underline;
     color: black;
 }
 .post a:hover {
     color: rgb(235, 98, 20);
 }
-
 .metric_counter {
     margin: 6px 0 3px 0;
 }

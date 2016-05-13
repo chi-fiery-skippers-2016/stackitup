@@ -1,1 +1,81 @@
-Build me too!
+<div class="container">
+<h1><%= @user.username %>'s Profile Page</h1>
+<div class='profile_top'>
+<h4><%= @user.email %> ---- </h4>
+</div>
+<div class='profile_top'><h4><%= @user.username %>'s total number of votes: <%= @user.votes.count %></h4>
+</div>
+
+<h2><%= @user.username %>'s Questions</h2>
+<% @user.questions.each do |question| %>
+  <div class="post">
+    <h3><a href="/questions/<%= question.id %>"><%= question.title %></a></h3>
+
+    <div class='metric_container'>
+        <div class='scorebox'>
+            <div class="metric_counter">
+                <%= question.votes.count %>
+            </div>
+            <span>votes</span>
+        </div>
+        <div class='scorebox'>
+            <div class="metric_counter">
+                <%= question.answers.count %>
+            </div>
+            <span>answers</span>
+        </div>
+        <div class='scorebox'>
+            <div class="metric_counter">
+                <%= question.view_count %>
+            </div>
+            <span>views</span>
+        </div>
+    </div>
+
+    <div class="tag_meta">
+        <% if question.tags.empty? %>
+            <br>
+        <% end %>
+        <% question.tags.each do |tag| %>
+        <span class="tag_box">
+            <a href = "/tags/<%= tag.id %>"><%= tag.name %></a>
+        </span>
+        <% end %>
+    </div>
+
+    <div class="post_meta">
+        <span>posted by: <a href = "/users/<%= question.author.id %>"><%= question.author.username %></a></span>
+        <span id='time_asked'><%= last_asked(question.created_at) %></span>
+    </div>
+  </div>
+<% end %>
+
+<h2><%= @user.username %>'s Answers</h2>
+<% @user.answers.each do |answer| %>
+  <div class="post">
+    <h3><a href="/questions/<%= answer.question_id %>"><%= answer.question.title %></a></h3>
+    <div class ='meta_container'>
+      <p><%= answer.body %></p>
+    </div>
+      <div class="tag_meta">
+          <% if answer.question.tags.empty? %>
+              <br>
+          <% end %>
+          <% answer.question.tags.each do |tag| %>
+          <span class="tag_box">
+              <a href = "/tags/<%= tag.id %>"><%= tag.name %></a>
+          </span>
+          <% end %>
+      </div>
+
+    <div class="answer_info">
+        <span>posted by: <a href = "/users/<%= answer.question.author.id %>"><%= answer.question.author.username %></a></span>
+        <span id='time_asked'><%= last_asked(answer.question.created_at) %></span>
+    </div>
+
+    <div>
+
+    </div>
+  </div>
+<% end %>
+</div>

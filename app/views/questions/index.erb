@@ -4,6 +4,8 @@
         <li class="active"><a href="/questions?sort=recent">Recent</a></li>
         <li><a href="/questions?sort=highest_votes">Highest Votes</a></li>
         <li><a href="/questions?sort=trending">Trending</a></li>
+        <li class='hidden'>THIS IS A VERY LONG TAB HERE NO</li>
+        <li> <a href ="/tags"> Tags </a> </li>
     </ul>
 </div>
 <!-- 1) Color code the metric counter boxes 2) Add link to tags for viewing all questions with selected tag
@@ -49,7 +51,7 @@
                     </div>
 
                     <div class="post_meta">
-                        <span>posted by: <%= question.author.username %></span>
+                        <span>posted by: <a href = "/users/<%= question.author.id %>"><%= question.author.username %></a></span>
                         <span id='time_asked'><%= last_asked(question.created_at) %></span>
                     </div>
             </div>
