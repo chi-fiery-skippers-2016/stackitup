@@ -2,9 +2,9 @@
   <h2> <%= @question.title %> </h2>
   <!-- css line -->
   <div class="question_headers">
-    <h4> asked: <%= last_asked(@question.created_at) %> </h4>
+    <h4> <%= last_asked(@question.created_at) %> </h4>
     <h4>viewed: <%= @question.view_count %></h4>
-    <h4>active: <%= @question.updated_at %> </h4>
+    <h4> active:<%= last_time(@question.updated_at) %> </h4>
   </div>
   <!-- css line -->
   <div class="vote_arrows">
@@ -37,7 +37,7 @@
      </div>
 
     <div class="user">
-      <p>asked: <%= @question.created_at %></p>
+      <p>asked: <%= last_time(@question.created_at) %></p>
       <a href"/users/<%= @question.author_id %>"> <%= @question.author %> </a>
       <!-- reputation -->
     </div>
@@ -45,76 +45,79 @@
 
   </div>
   <!-- css line  -->
+  <hr>
   <% for response in @question.responses %>
     <div class="question_response">
       <p><%= response.body %> --</p>
       </a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
-      <p><%= response.created_at %></p>
+      <p><%= last_time(response.created_at) %></p>
     </div>
   <% end %>
   <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
   <!-- add comment link goes here (need reputation to comment?)  -->
 </div>
 
-<% if !@question.answers.empty? %>
-  <div class="answer_container">
-    <div class="answer_sort">
-      <h4><%= @question.answers.count %> Answers</h4>
-      <ul class="tabs">
-        <li><a href="/questions/<%= @question.id %>?sort=active">Active</a></li>
-        <li><a href="/questions/<%= @question.id %>/oldest">Oldest</a></li>
-        <li class="active"><a href="/questions/<%= @question.id %>/votes">Votes</a></li>
-      </ul>
-    </div>
+<div class="answer_container">
 
-
-    <% for answer in @answers %>
-
-      <div class="vote_arrows">
-        <form method="post" action="/questions/<%= @question.id %>/votes">
-          <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
-          <input type="hidden" name="direction" value="up">
-          <input type="hidden" name="voteable" value="answer">
-          <input type="hidden" name="answer_id" value="<%= answer.id %>">
-        </form>
-        <h3><%= answer.score %></h3>
-        <form method="post" action="/questions/<%= @question.id %>/votes">
-          <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
-          <input type="hidden" name="direction" value="down">
-          <input type="hidden" name="voteable" value="answer">
-          <input type="hidden" name="answer_id" value="<%= answer.id %>">
-        </form>
+  <% if !@question.answers.empty? %>
+    <div class="answer_container">
+      <div class="answer_sort">
+        <h4><%= @question.answers.count %> Answers</h4>
+        <ul class="tabs">
+          <li><a href="/questions/<%= @question.id %>?sort=active">Active</a></li>
+          <li><a href="/questions/<%= @question.id %>/oldest">Oldest</a></li>
+          <li class="active"><a href="/questions/<%= @question.id %>/votes">Votes</a></li>
+        </ul>
       </div>
 
-      <p class="body"><%= answer.body %></p>
 
-      <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+      <% for answer in @answers %>
 
-      <div class="user">
-        <p>answered: <%= answer.created_at %></p>
-        <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
-        <!-- reputation -->
-      </div>
-
-      <% for response in answer.responses %>
-        <div>
-          <p><%= response.body %> - </p>
-          <a href="#"><%= response.user.username %></a>
-          <p><%= response.created_at %></p>
+        <div class="vote_arrows">
+          <form method="post" action="/questions/<%= @question.id %>/votes">
+            <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
+            <input type="hidden" name="direction" value="up">
+            <input type="hidden" name="voteable" value="answer">
+            <input type="hidden" name="answer_id" value="<%= answer.id %>">
+          </form>
+          <h3><%= answer.score %></h3>
+          <form method="post" action="/questions/<%= @question.id %>/votes">
+            <input class="down_vote" type="image" src='/imgs/rubber-duck-down.png' alt="Submit" height='25px' width='25px'>
+            <input type="hidden" name="direction" value="down">
+            <input type="hidden" name="voteable" value="answer">
+            <input type="hidden" name="answer_id" value="<%= answer.id %>">
+          </form>
         </div>
+
+        <p class="body"><%= answer.body %></p>
+
+        <div class="links"> <a href="#">share</a> <a href="#">improve this question</a> </div>
+
+        <div class="user">
+          <p>answered: <%= last_time(answer.created_at) %></p>
+          <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
+          <!-- reputation -->
+        </div>
+
+        <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
+        <% for response in answer.responses %>
+          <div>
+            <p><%= response.body %> - </p>
+            <a href="#"><%= response.user.username %></a>
+            <p><%= response.created_at %></p>
+          </div>
+        <% end %>
+
+        <a href="#">add a comment</a>
+
       <% end %>
+    </div>
+  <% end %>
 
-      <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
-
-    <% end %>
-  </div>
-<% end %>
-
-<h4>Your Answer</h4>
-<form method="post" action="/answers" id="answer_form">
-  <textarea type="textarea" rows="4" cols="50" name="body" placeholder='write your answer here'></textarea>
-  <input type="hidden" name="question_id" value="<%= @question.id %>">
-  <input type="submit">
-</form>
-
-
+  <h4>Your Answer</h4>
+  <form action="/answers/new" id="answer_form">
+    <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
+    <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
+    <input type="submit">
+  </form>
+</div>
