@@ -1,7 +1,14 @@
 get '/questions' do
+  puts params
+  puts params[:sort]
   sort_by = params[:sort] || 'recent'
   @questions = Question.sort_questions(sort_by)
-  erb :'questions/index'
+
+  if request.xhr?
+    erb :"questions/_tab_content", locals: { questions: @questions }, layout:false
+  else
+    erb :'questions/index'
+  end
 end
 
 get '/questions/new' do
@@ -18,7 +25,6 @@ get '/questions/:id' do
 end
 
 post '/questions' do
-  p params
   tag_string = params.delete('tag_names')
   new_question = Question.new(params[:question])
   new_question.save
