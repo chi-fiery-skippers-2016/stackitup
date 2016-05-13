@@ -44,8 +44,6 @@
 
   <% if !@question.responses.empty? %>
     </div>
-      <!-- css line  -->
-      <hr>
       <% for response in @question.responses %>
         <div class="question_response">
           <p><%= response.body %> --</p>
@@ -55,7 +53,6 @@
       <% end %>
       <% if logged_in? %>
       <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
-      <!-- add comment link goes here (need reputation to comment?)  -->
       <% end %>
     </div>
   <% end %>
@@ -74,7 +71,6 @@
 
     <div class="answer_content">
       <% for answer in @answers %>
-
         <div class="vote_arrows">
           <form method="post" action="/questions/<%= @question.id %>/votes">
             <input class="up_vote" type="image" src='/imgs/rubber-duck-up.png' alt="Submit" height='25px' width='25px'>
@@ -100,17 +96,20 @@
           <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
           <!-- reputation -->
         </div>
+    <h5> Responses </h5>
         <% for response in answer.responses %>
-          <div class ='uncle_scrooge'>
+          <div class ='question_response'>
             <p><%= response.body %> - </p>
-            <a href="#"><%= response.user.username %></a>
-            <p><%= response.created_at %></p>
+            <span>quacked by: </span>
+            <a href="/user/<%= response.user_id %>"><%= response.user.username %></a>
+
+            <p><%= last_time(response.created_at) %></p>
           </div>
         <% end %>
         <% if logged_in? %>
         <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
         <% end %>
-
+        <hr>
       <% end %>
     </div>
   <% end %>
@@ -118,7 +117,7 @@
   <% if logged_in? %>
   <h4>Your Answer</h4>
   <form method='post' action="/answers" id="answer_form">
-    <textarea type="textarea" rows="4" cols="97" name="body" placeholder='write your answer here'></textarea>
+    <textarea type="textarea" rows="4" cols="97" name="body" placeholder='quack off here'></textarea>
     <input type='hidden' name='question_id' value='<%= @question.id %>'>
     <input type="submit">
   </form>
