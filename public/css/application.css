@@ -23,5 +23,19 @@ rgb(255, 247, 64) - yellow*/
 
 
 body {
-    background-color: rgb(209, 224, 195);
+    background-color: whitesmoke;
+}
+
+.vote_arrows input {
+  max-width: 35px;
+  max-height: 35px;
+}
+.vote_arrows form {
+  padding:0;
+  margin:0;
+}
+.vote_arrows h3 {
+  padding-left:13px;
+  margin-top:-16px;
+  margin-bottom:2px;
 }
