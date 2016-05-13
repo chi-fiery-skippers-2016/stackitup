@@ -1,0 +1,9 @@
+<div class="container">
+<h1>Leave a Response</h1>
+  <form id="new_response" method="post" action="/responses">
+    <textarea rows="10" cols="100" name="body" form="new_response"></textarea>
+    <input type='hidden' name='respondable_id' value='<%= @respondable_id %>'>
+    <input type='hidden' name='respondable_type' value='<%= @respondable_type %>'>
+    <input id="button" type="submit" value="Post">
+  </form>
+</div>

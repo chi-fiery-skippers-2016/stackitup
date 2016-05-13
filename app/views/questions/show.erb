@@ -52,8 +52,7 @@
       <p><%= response.created_at %></p>
     </div>
   <% end %>
-
-  <a class="add_quack" href="#">add a quack</a>
+  <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
   <!-- add comment link goes here (need reputation to comment?)  -->
 </div>
 
@@ -105,7 +104,7 @@
         </div>
       <% end %>
 
-      <a href="#">add a quack</a>
+      <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
 
     <% end %>
   </div>

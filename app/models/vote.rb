@@ -16,4 +16,17 @@ class Vote < ActiveRecord::Base
       self.voteable.save
     end
   end
+
+  def double_voting?(current_user_id)
+    if self.voteable.class == Question
+      question = Question.find(self.voteable.id)
+      puts question
+      votes = question.votes.where(voter_id: current_user_id)
+      puts votes
+    elsif self.voteable.class == Answer
+      answer = Answer.find(self.voteable.id)
+      votes = answer.votes.where(voter_id: current_user_id)
+    end
+    votes.count == 0 ? false : true
+  end
 end
