@@ -38,7 +38,7 @@
 
     <div class="user">
       <p>asked: <%= last_time(@question.created_at) %></p>
-      <a href"/users/<%= @question.author_id %>"> <%= @question.author %> </a>
+      <a href="/users/<%= @question.author_id %>"><%= @question.author.username %> </a>
       <!-- reputation -->
     </div>
 
@@ -49,7 +49,7 @@
   <% for response in @question.responses %>
     <div class="question_response">
       <p><%= response.body %> --</p>
-      </a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
+      <a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
       <p><%= last_time(response.created_at) %></p>
     </div>
   <% end %>
@@ -115,7 +115,7 @@
   <% end %>
 
   <h4>Your Answer</h4>
-  <form action="/answers/new" id="answer_form">
+  <form method='post' action="/answers" id="answer_form">
     <!-- <input type="textarea" rows="4" cols="50" name="answer_form"> -->
     <textarea type="textarea" rows="4" cols="50" name="answer_form" placeholder='write your answer here'></textarea>
     <input type="submit">
