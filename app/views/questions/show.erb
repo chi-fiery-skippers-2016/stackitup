@@ -42,20 +42,23 @@
       <!-- reputation -->
     </div>
 
-
-  </div>
-  <!-- css line  -->
-  <hr>
-  <% for response in @question.responses %>
-    <div class="question_response">
-      <p><%= response.body %> --</p>
-      <a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
-      <p><%= last_time(response.created_at) %></p>
+  <% if !@question.responses.empty? %>
+    </div>
+      <!-- css line  -->
+      <hr>
+      <% for response in @question.responses %>
+        <div class="question_response">
+          <p><%= response.body %> --</p>
+          <a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
+          <p><%= last_time(response.created_at) %></p>
+        </div>
+      <% end %>
+      <% if logged_in? %>
+      <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
+      <!-- add comment link goes here (need reputation to comment?)  -->
+      <% end %>
     </div>
   <% end %>
-  <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
-  <!-- add comment link goes here (need reputation to comment?)  -->
-</div>
 
 <div class="answer_container">
 
@@ -97,8 +100,6 @@
           <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
           <!-- reputation -->
         </div>
-
-        <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
         <% for response in answer.responses %>
           <div class ='uncle_scrooge'>
             <p><%= response.body %> - </p>
@@ -106,8 +107,7 @@
             <p><%= response.created_at %></p>
           </div>
         <% end %>
-
-        <a class='donald'href="#">add a comment</a>
+        <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
 
       <% end %>
     </div>
