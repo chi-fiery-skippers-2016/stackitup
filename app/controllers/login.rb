@@ -11,11 +11,19 @@ post '/login' do
   @user = User.find_by(email: params[:email])
   if @user.authenticate(params[:password])
     session[:user_id] = @user.id
-    redirect '/'
+    if request.xhr?
+      @question = Question.find_by(title: params[:title])
+      @answers = @question.answers
+      erb :'/questions/show'
+    else
+      redirect '/'
+    end
   else
     redirect '/login'
   end
 end
+
+
 
 get '/logout' do
   session.delete(:user_id)

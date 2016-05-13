@@ -42,12 +42,30 @@ $(document).ready(function() {
     console.log(this)
     console.log(url)
     $.ajax({
-      url: url
+      url: url,
     })
     .done(function(response){
       $('.header_links').remove();
       $('nav ul').append(response);
     })
+
+  $('body').on('submit', '#wabam', function(event){
+    event.preventDefault();
+    email = $('#wabam input[name=email]').val()
+    password = $('#wabam input[name=password]').val()
+    title = $('.body_container h2').html();
+    var url = $('#wabam').attr("action");
+    console.log(url);
+    $.ajax({
+      method: "POST",
+      url: url,
+      data: { title: title, email: email, password: password }
+    })
+    .done(function(response){
+      $('body').remove();
+      $('html').append(response);
+    })
+  })
 
   });
 });

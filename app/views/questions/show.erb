@@ -1,10 +1,10 @@
 <div class="body_container">
-  <h2> <%= @question.title %> </h2>
+  <h2><%= @question.title %></h2>
   <!-- css line -->
   <div class="question_headers">
-    <h4> <%= last_asked(@question.created_at) %> </h4>
+    <h4><%= last_asked(@question.created_at) %></h4>
     <h4>viewed: <%= @question.view_count %></h4>
-    <h4> active:<%= last_time(@question.updated_at) %> </h4>
+    <h4>active:<%= last_time(@question.updated_at) %></h4>
   </div>
   <!-- css line -->
   <div class="vote_arrows">
@@ -107,16 +107,20 @@
             <p><%= response.created_at %></p>
           </div>
         <% end %>
+        <% if logged_in? %>
         <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
+        <% end %>
 
       <% end %>
     </div>
   <% end %>
 
+  <% if logged_in? %>
   <h4>Your Answer</h4>
   <form method='post' action="/answers" id="answer_form">
     <textarea type="textarea" rows="4" cols="97" name="body" placeholder='write your answer here'></textarea>
     <input type='hidden' name='question_id' value='<%= @question.id %>'>
     <input type="submit">
   </form>
+  <% end %>
 </div>
