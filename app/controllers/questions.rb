@@ -37,6 +37,11 @@ post '/questions/:id/votes' do
   voteable = params[:voteable] == 'question' ? @question : answer
   direction = params[:direction] == 'up' ? true : false
 
-  Vote.create!(voteable: voteable, voter_id: current_user.id, up?: direction)
+  vote = Vote.new(voteable: voteable, voter_id: current_user.id, up?: direction)
+  if vote.double_voting?(session[:user_id]) # returning? true/false
+    # THROW ERROR MESSAGE
+  else
+    vote.save
+  end
   erb :'questions/show'
 end

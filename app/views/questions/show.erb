@@ -27,7 +27,7 @@
   <div class="meta_stuff">
     <div class="tag_meta">
       <% for tag in @question.tags %>
-      <a href="#"><%= tag.name %></a>
+      <a href="/tags/<%= tag.id %>"><%= tag.name %></a>
       <% end %>
     </div>
 
@@ -53,12 +53,11 @@
       <p><%= last_time(response.created_at) %></p>
     </div>
   <% end %>
-
-  <a class="add_quack" href="#">add a quack</a>
+  <a class="add_quack" href="/responses/new?q_id=<%= @question.id %>">add a quack</a>
   <!-- add comment link goes here (need reputation to comment?)  -->
 </div>
 
-<div class="answer_container"
+<div class="answer_container">
 
   <% if !@question.answers.empty? %>
     <div class="answer_container">
@@ -100,7 +99,7 @@
           <!-- reputation -->
         </div>
 
-        <a href="#">add a quack</a>
+        <a class="add_quack" href="/responses/new?a_id=<%= answer.id %>">add a quack</a>
         <% for response in answer.responses %>
           <div>
             <p><%= response.body %> - </p>
@@ -114,7 +113,6 @@
       <% end %>
     </div>
   <% end %>
-
 
   <h4>Your Answer</h4>
   <form action="/answers/new" id="answer_form">
