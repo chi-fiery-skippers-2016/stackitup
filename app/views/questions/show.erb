@@ -93,7 +93,7 @@
 
         <div class="user">
           <p>answered: <%= last_time(answer.created_at) %></p>
-          <a href"/users/<%= @question.author_id %>"> <%= answer.theOneWhoAnswers.username %> </a>
+          <a href="/users/<%= answer.theOneWhoAnswers_id %>"><%= answer.theOneWhoAnswers.username %></a>
           <!-- reputation -->
         </div>
     <h5> Responses </h5>
@@ -101,7 +101,7 @@
           <div class ='question_response'>
             <p><%= response.body %> - </p>
             <span>quacked by: </span>
-            <a href="/user/<%= response.user_id %>"><%= response.user.username %></a>
+            <a href="/users/<%= response.user_id %>"><%= response.user.username %></a>
 
             <p><%= last_time(response.created_at) %></p>
           </div>
