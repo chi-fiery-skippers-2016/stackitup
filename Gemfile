@@ -18,6 +18,8 @@ gem 'bcrypt'
 
 gem 'shotgun'
 
+gem 'faker'
+
 group :test do
   gem 'shoulda-matchers'
   gem 'rack-test'
@@ -27,5 +29,4 @@ end
 
 group :test, :development do
   gem 'factory_girl'
-  gem 'faker'
 end
